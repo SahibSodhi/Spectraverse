@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#034eb8"
+    tools:context="com.spectraverse.spectraverse.activities.SplashActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/splash"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/splash_screen" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="154dp"
+            android:text="SpectraVerse"
+            android:textColor="@android:color/white"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="A CAREER UNIVERSE"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/partner"
+            android:layout_alignParentBottom="true"
+           android:layout_marginBottom="60dp"
+            android:text="Powered By"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <ImageView
+            android:id="@+id/partner"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/partner" />
+    </RelativeLayout>
+
+</RelativeLayout>

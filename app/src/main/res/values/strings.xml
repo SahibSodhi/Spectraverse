@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Spectraverse</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Hello Food!</string>
+    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+
+    <string name="slide_2_title">Movie Tickets</string>
+    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+
+    <string name="slide_4_title">World Travel</string>
+    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="about_us_title">Striving for the excellence of 21 million specially abled resources and skills</string>
+    <string name="mission">Our mission is to become the most comprehensive career universe and network for people with special abilities across India.</string>
+    <string name="vision">Our vision is to build a career platform of over 1,000,000 interconnected specially abled individuals. Provide them with the best career resources and give them access to jobs in over 100 leading companies across India.</string>
+    <string name="objective">To enrol specially abled in economic activity through Spectraverse. This enrolment is analysed to have a potential effect on GDP of country.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
