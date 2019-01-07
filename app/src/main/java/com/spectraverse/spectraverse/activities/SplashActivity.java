@@ -3,6 +3,8 @@ package com.spectraverse.spectraverse.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -40,32 +42,24 @@ public class SplashActivity extends Activity {
         /*iv.startAnimation(anim);*/
 
         sequential = AnimationUtils.loadAnimation(this, R.anim.sequential);
-
-        final Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-
-        splashThread = new Thread() {
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                try {
-                    sleep(500);
-                    textView1.startAnimation(anim);
-                    textView2.startAnimation(anim);
-                    sleep(1000);
-                    textView3.startAnimation(sequential);
-                    partner.startAnimation(sequential);
-                    sleep(500);
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    startActivity(intent);
-                    SplashActivity.this.finish();
-                }
-
+                startNextActivity();
             }
-        };
-        splashThread.start();
+        }, 3000);
 
+
+    }
+
+    private void startNextActivity() {
+            textView1.startAnimation(anim);
+            textView2.startAnimation(anim);
+            textView3.startAnimation(sequential);
+            partner.startAnimation(sequential);
+            Intent intent=new Intent(SplashActivity.this,MainActivity.class);
+            startActivity(intent);
+            finish();
     }
 
 }
