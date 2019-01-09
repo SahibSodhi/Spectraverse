@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.spectraverse.spectraverse.R;
+import com.spectraverse.spectraverse.activities.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class LearningFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Learning Resources");
         View view = inflater.inflate(R.layout.fragment_learning, container, false);
 
         // Setting ViewPager for each Tabs

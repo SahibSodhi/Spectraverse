@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.spectraverse.spectraverse.R;
 import com.spectraverse.spectraverse.Adapters.ExampleAdapter;
 import com.spectraverse.spectraverse.activities.ExampleItem;
+import com.spectraverse.spectraverse.activities.MainActivity;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Types of Different Abilities");
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         exampleList = new ArrayList<>();

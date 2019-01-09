@@ -22,7 +22,7 @@
 
         <activity android:name=".activities.SplashActivity" android:theme="@android:style/Theme.Black.NoTitleBar"></activity>
 
-        <activity android:name=".activities.MainActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activities.MainActivity" ></activity>
     </application>
 
 </manifest>
