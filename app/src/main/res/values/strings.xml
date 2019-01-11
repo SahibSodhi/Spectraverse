@@ -16,7 +16,7 @@
     <string name="slide_4_title">World Travel</string>
     <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
 
-    <string name="press_back_msg">Press again to exit</string>
+    <string name="press_back_msg">Press back again to exit</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

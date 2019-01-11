@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TextView websiteLink;
     private ActionBarDrawerToggle toggle;
     private long backPressedTime;
+    private Toast backToast;
 
     Intent intent = new Intent(Intent.ACTION_VIEW);
     private View navHeader;
@@ -143,9 +144,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         long delayTimeForExitToast = 2000;
         if (backPressedTime + delayTimeForExitToast > System.currentTimeMillis()) {
+            backToast.cancel();
             finish();
         } else {
-            Toast.makeText(getBaseContext(), getString(R.string.press_back_msg), Toast.LENGTH_SHORT).show();
+            backToast = Toast.makeText(getBaseContext(), getString(R.string.press_back_msg), Toast.LENGTH_SHORT);
+            backToast.show();
         }
         backPressedTime = System.currentTimeMillis();
     }
