@@ -16,25 +16,9 @@
                             <entry key="launcherLegacy">
                               <value>
                                 <PersistentState>
-                                  <option name="children">
-                                    <map>
-                                      <entry key="image">
-                                        <value>
-                                          <PersistentState>
-                                            <option name="values">
-                                              <map>
-                                                <entry key="paddingPercent" value="35" />
-                                              </map>
-                                            </option>
-                                          </PersistentState>
-                                        </value>
-                                      </entry>
-                                    </map>
-                                  </option>
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="backgroundColor" value="b80311" />
                                       <entry key="iconShape" value="CIRCLE" />
                                       <entry key="imageAsset" value="C:\Users\admin\AndroidStudioProjects\Spectraverse\app\src\main\res\drawable\logo.png" />
                                       <entry key="outputName" value="ic_launcher_round" />

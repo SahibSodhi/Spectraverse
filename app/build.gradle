@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'Spectraversekey'
+            keyPassword 'spectra_12@2019'
+            storeFile file('C:/Users/admin/AndroidKeystore/spectraverse.keystore.release.jks')
+            storePassword 'Josaa@2015'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.spectraverse.spectraverse"
@@ -11,15 +19,22 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
+            signingConfig signingConfigs.config
         }
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.volley:volley:1.1.1'

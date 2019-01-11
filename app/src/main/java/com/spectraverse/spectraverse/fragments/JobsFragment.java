@@ -33,7 +33,7 @@ public class JobsFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private JobAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-   private RequestQueue mRequestQueue;
+    private RequestQueue mRequestQueue;
     ProgressDialog progressDialog;
 
     @Override
@@ -54,7 +54,7 @@ public class JobsFragment extends Fragment {
         progressDialog.setMessage("Please wait...");
         progressDialog.setCancelable(true);
 
-       parseJSON();
+        parseJSON();
 
         return rootView;
     }
@@ -76,21 +76,20 @@ public class JobsFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 progressDialog.hide();
-                Log.e("response",response.toString());
-                JobsResponseModel jobsResponseModel = new Gson().fromJson(response.toString(),JobsResponseModel.class);
-                if(jobsResponseModel.getStatus()==1){
-                   ArrayList<JobsResponseModel.JobsDataModel> list= jobsResponseModel.getResultData();
-                   if(list!=null && list.size()>0){
-                       mAdapter.setDataValue(list);
+                Log.e("response", response.toString());
+                JobsResponseModel jobsResponseModel = new Gson().fromJson(response.toString(), JobsResponseModel.class);
+                if (jobsResponseModel.getStatus() == 1) {
+                    ArrayList<JobsResponseModel.JobsDataModel> list = jobsResponseModel.getResultData();
+                    if (list != null && list.size() > 0) {
+                        mAdapter.setDataValue(list);
 
-                       }else {
-                       mRecyclerView.setVisibility(View.GONE);
-                   }
+                    } else {
+                        mRecyclerView.setVisibility(View.GONE);
+                    }
 
-                }else {
-                    Toast.makeText(getActivity(), jobsResponseModel.getMessage(),Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), jobsResponseModel.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
 
 
             }

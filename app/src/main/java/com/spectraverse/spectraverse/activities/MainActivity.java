@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.spectraverse.spectraverse.R;
 import com.spectraverse.spectraverse.fragments.AboutUsFragment;
@@ -29,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private TextView websiteLink;
     private ActionBarDrawerToggle toggle;
-    /*private Toolbar toolbar;*/
+    private long backPressedTime;
+
     Intent intent = new Intent(Intent.ACTION_VIEW);
     private View navHeader;
 
@@ -39,9 +43,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*toolbar = findViewById(R.id.toolbar);
-        setActionBarTitle("Type of Different Abilities");
-        setSupportActionBar(toolbar);*/
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -54,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+            /*getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();*/
+            replaceFragment(new HomeFragment(), null, true);
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         });
 
-
+        backPressedTime=0;
     }
 
     @Override
@@ -85,20 +87,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+                /*getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();*/
+                replaceFragment(new HomeFragment(), null, true);
                 break;
-            /*case R.id.nav_learning:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LearningFragment()).commit();
-                break;
-            case R.id.nav_videos:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VideosFragment()).commit();
-                break;*/
-
             case R.id.nav_blog:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlogFragment()).commit();
+                /*getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BlogFragment()).commit();*/
+                replaceFragment(new BlogFragment(), null, true);
                 break;
             case R.id.nav_about_us:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutUsFragment()).commit();
+               /*getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutUsFragment()).commit();*/
+                replaceFragment(new AboutUsFragment(), null, true);
                 break;
             case R.id.nav_instagram:
                 intent.setData(Uri.parse("https://www.instagram.com/spectraverse/"));
@@ -124,14 +122,63 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+            return;
+        }
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStack();
+            return;
+        }
+
+        FragmentManager fm = getSupportFragmentManager();
+        if (fm.getBackStackEntryCount() == 1) {
+            exitApplication();
+            return;
+        }
+        super.onBackPressed();
+    }
+
+    public void exitApplication() {
+
+        long delayTimeForExitToast = 2000;
+        if (backPressedTime + delayTimeForExitToast > System.currentTimeMillis()) {
+            finish();
         } else {
-            super.onBackPressed();
+            Toast.makeText(getBaseContext(), getString(R.string.press_back_msg), Toast.LENGTH_SHORT).show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+
+    Fragment getCurrentFragment()
+    {
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        return currentFragment;
+    }
+
+    public void replaceFragment(Fragment newFragment, Bundle bundle, boolean isAddToBackStack) {
+
+        String tag = newFragment.getClass().getSimpleName();
+        if (bundle != null) {
+            newFragment.setArguments(bundle);
+        }
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+        if (getCurrentFragment() != null) {
+            ft.hide(getCurrentFragment());
+        }
+        ft.add(R.id.fragment_container, newFragment, tag);
+        newFragment.setRetainInstance(true);
+        if (isAddToBackStack) {
+            ft.addToBackStack(tag);
+        }
+        try {
+            ft.commitAllowingStateLoss();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+//            ft.commitAllowingStateLoss();
         }
     }
 
-   /* public void setActionBarTitle(String title){
-        toolbar.setTitle(title);
-    }*/
 }

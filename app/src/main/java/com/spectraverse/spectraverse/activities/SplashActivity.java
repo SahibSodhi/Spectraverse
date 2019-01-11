@@ -16,7 +16,6 @@ import com.spectraverse.spectraverse.R;
 
 public class SplashActivity extends Activity {
 
-    private ImageView iv;
     private ImageView partner;
     private TextView textView1;
     private TextView textView2;
@@ -34,16 +33,12 @@ public class SplashActivity extends Activity {
     }
 
     private void StartAnimations() {
-        iv = findViewById(R.id.splash);
+
         partner = findViewById(R.id.partner);
-        /*textView1 = findViewById(R.id.textView1);
-        textView2 = findViewById(R.id.textView2);*/
         layout = findViewById(R.id.text_layout);
         textView3 = findViewById(R.id.textView3);
 
         anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
-        /*iv.startAnimation(anim);*/
-
         sequential = AnimationUtils.loadAnimation(this, R.anim.sequential);
         layout.setAnimation(anim);
         textView3.setAnimation(sequential);

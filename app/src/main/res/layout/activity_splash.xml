@@ -3,17 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1c5a76"
+    android:background="@drawable/splash_screen"
     tools:context="com.spectraverse.spectraverse.activities.SplashActivity">
-
-
-    <ImageView
-        android:id="@+id/splash"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/splash_screen" />
 
     <LinearLayout
         android:id="@+id/text_layout"
@@ -21,27 +12,27 @@
         android:layout_height="300dp"
         android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="180dp"
-        android:text="SpectraVerse"
-        android:textColor="@android:color/white"
-        android:textSize="40sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="180dp"
+            android:text="SpectraVerse"
+            android:textColor="@android:color/white"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="A CAREER UNIVERSE"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:textStyle="italic" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="A CAREER UNIVERSE"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="italic" />
 
     </LinearLayout>
 
