@@ -42,14 +42,15 @@ public static *** v(...);
 -dontwarn android.support.**
 -dontwarn com.google.**
 
-#-keep class * implements android.os.Parcelable {
-#   public static final android.os.Parcelable$Creator *;
-#}
 
-#-keep class * implements java.io.Serializable { *; }
+-keep class * implements android.os.Parcelable {
+   public static final android.os.Parcelable$Creator *;
+}
+
+-keep class * implements java.io.Serializable { *; }
 
 # Application classes that will be serialized/deserialized over Gson
-#-keep class com.spectraverse.spectraverse.models.** { *; }
+-keep class com.spectraverse.spectraverse.models.** { *; }
 
 # Gson specific classes
 -keep class sun.misc.Unsafe { *; }
