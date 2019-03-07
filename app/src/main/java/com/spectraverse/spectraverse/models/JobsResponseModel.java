@@ -133,17 +133,17 @@ public class JobsResponseModel extends BaseModel {
         private String id;
         private String fname;
         private String lname;
-        private int pic;
+        private String pic;
         private String business_unit_id;
-        private String[] BusinessUnit;
+        //private String[] BusinessUnit;
 
         protected UserDataModel(Parcel in) {
             id = in.readString();
             fname = in.readString();
             lname = in.readString();
-            pic = in.readInt();
+            pic = in.readString();
             business_unit_id = in.readString();
-            BusinessUnit = in.createStringArray();
+            //BusinessUnit = in.createStringArray();
         }
 
         public final Creator<UserDataModel> CREATOR = new Creator<UserDataModel>() {
@@ -166,11 +166,9 @@ public class JobsResponseModel extends BaseModel {
             return fname;
         }
 
-        public String getLname() {
-            return lname;
-        }
+        public String getLname() { return lname; }
 
-        public int getPic() {
+        public String getPic() {
             return pic;
         }
 
@@ -178,9 +176,7 @@ public class JobsResponseModel extends BaseModel {
             return business_unit_id;
         }
 
-        public String[] getBusinessUnit() {
-            return BusinessUnit;
-        }
+        //public String[] getBusinessUnit() { return BusinessUnit; }
 
         @Override
         public int describeContents() {
@@ -192,9 +188,9 @@ public class JobsResponseModel extends BaseModel {
             dest.writeString(id);
             dest.writeString(fname);
             dest.writeString(lname);
-            dest.writeInt(pic);
+            dest.writeString(pic);
             dest.writeString(business_unit_id);
-            dest.writeStringArray(BusinessUnit);
+           // dest.writeStringArray(BusinessUnit);
         }
     }
 }
